@@ -18,3 +18,5 @@ export default boot(({ router, store }) => {
     return config;
   });
 });
+
+export { todoApi };
