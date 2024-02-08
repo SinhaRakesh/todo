@@ -1,7 +1,10 @@
 import { boot } from 'quasar/wrappers';
 import todoRoutes from './router/todo-router';
 import axios from 'axios';
-import { useUserStore } from 'src/stores/user-store';
+import { RouteRecordRaw } from 'vue-router';
+import { useUserStore } from 'stores/user-store';
+import { useMenuStore } from 'stores/menu-store';
+// import todoMenus from 'src/marketApps/todo/menu';
 
 const todoApi = axios.create({
   baseURL: process.env.TODOAPI_BASE_URL,
@@ -17,6 +20,22 @@ export default boot(({ router, store }) => {
     config.headers.Authorization = `Bearer ${userStore.user.token}`;
     return config;
   });
+
+  const menuStore = useMenuStore(store);
+
+  menuStore.addMenu('Top', {
+    icon: 'mdi-view-dashboard',
+    title: 'Todo',
+  });
+  menuStore.addMenu(
+    'Top',
+    {
+      icon: 'mdi-view-dashboard',
+      title: 'Dashboard',
+      route: '/admin/todo',
+    },
+    'MM'
+  );
 });
 
 export { todoApi };

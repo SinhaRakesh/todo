@@ -1,6 +1,6 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <!-- <HomeNavigationComponent /> -->
+    <BaseNavigationComponent />
     <q-page-container>
       <h1>Todo Layout</h1>
       <router-view />
@@ -10,6 +10,6 @@
 
 <script setup lang="ts">
 import { ref, provide } from 'vue';
-// import HomeNavigationComponent from 'src/components/layout/HomeNavigationComponent.vue';
+import BaseNavigationComponent from 'src/components/layout/BaseNavigationLayout.vue';
 provide('SelectedApp', 'Todo');
 </script>
